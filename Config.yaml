@@ -36,16 +36,17 @@
             - fD
             - mD
           description: >-
-            A value from the enumeration below identifying the plugin type. 
-            'g'=Guidance, 'c'=convenience, 'm'=mapper, 'f'=FHIR data server, 'mD'= default mapper, 'fD'=default FHIR server. In 
+            A value identifying the plugin type. 
+            'g'=Guidance, 'c'=Convenience, 'm'=Mapper, 'f'=FHIR, 'mD'= Default Mapper, 'fD'=Default FHIR. In 
             the clinical arena, only one FHIR server and only one mapper is 
             allowed, and this can be indicated either with the defaults, or by 
             only installing one mapper and one FHIR plugin type.
           example: m
         pluginTypeTitle:
           type: string
+          enum:
           description: >-
             A human-readable value for the type. 'g'=Guidance, 'c'=Convenience, 
-            'm'=Mapping, 'f'=FHIR, 'mD'=Default Mapping plugin, 'fD'=Default FHIR plugin
+            'm'=Mapper, 'f'=FHIR, 'mD'=Default Mapper, 'fD'=Default FHIR
         settingsDefaults:
           $ref: '#/components/schemas/Settings'
