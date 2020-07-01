@@ -1,0 +1,63 @@
+    PluginParameter:
+      type: object
+      required:
+        - id
+        - parameterValue
+      properties:
+        id:
+          type: string
+          description: >-
+            The id for one of the parameters used by the plugin in question.
+            Parameters are completely defined by the plugin and need not be
+            interchangable with other plugins. The client will have no prior
+            knowledge for plugin parameters.
+          example: 'pdspi-guidance-example:1'
+        title:
+          type: string
+          description: >-
+            A non-standardized, human-readable string to describe the id. May be
+            implemented by the PDS to aid in debugging, clients should not
+            depend on this value.
+          example: Extended interval nomogram
+        parameterDescription:
+          type: string
+          description: >-
+            Description provided by the plugin. The plugin, not the client, is
+            therefore responsible for converting the descriptions to the
+            appropriate language based on internationalization and
+            personalization preferences.
+          example: >-
+            This calculator uses one of four extended-interval nomograms. Please
+            choose one nomogram.
+        parameterValue:
+          type: object
+          description: >-
+            The actual value of the parameter. Used to pass the plugin's factory
+            defaults, admin over-rides, user over-rides, or the actual values
+            used by the plugin. NOTE: This value is actually an object type, but
+            we use 'string' here to overcome a shortcoming of the swagger ui.
+            This design choice was made in order to prioritize a better
+            interactive documentation experience for the API user.
+          example:
+            value: Hartford
+        legalValues:
+          type: object
+          description: >-
+            The 'legalValues' will always be present in the '/config' endpoint
+            response and need not be provided to or from the client in the
+            '/guidance' endpoint call. Use the JSON schema,
+            https://json-schema.org/draft/2019-09/json-schema-validation.html.
+            For example, { type: 'string', 'enum': [ 'Gentamicin', 'Amikacin' ]
+            } to define an enumeration,  { 'type': 'number' } for a float, and {
+            'type': 'number', 'minimum': '0' } for a positive number, and {
+            'type': 'integer' } for an integer. NOTE: This value is actually an
+            object type, but we use 'string' here to overcome a shortcoming of
+            the swagger ui. This design choice was made in order to prioritize a
+            better interactive documentation experience for the API user. 
+          example:
+            type: string
+            enum:
+              - Hartford
+              - Urban-Craig
+              - Conventional A
+              - Conventional B
