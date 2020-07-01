@@ -32,7 +32,7 @@
         ptid:
           description: >-
             The ID of the patient for which guidance is required. If not
-            specified, depend only on userSuppliedPatientVariables
+            specified, depend only on the 'variableValue' in 'PatientVariable', which is part of 'inputs'
           type: string
           example: smart-7321938
         inputs:
@@ -52,8 +52,8 @@
         timeout:
           type: integer
           description: >-
-            Number of milliseconds until time out. Factory system default should
-            be 120000 (2 minutes) for RUO applictions, and only 500ms for
+            Number of milliseconds until time out. A reasonable factory system default is
+            120000 (2 minutes) for RUO applictions, and only 500ms for
             clinical.
         fhir_piid:
           type: string
