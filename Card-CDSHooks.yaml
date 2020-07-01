@@ -1,0 +1,117 @@
+    Card:
+      type: object
+      required:
+        - id
+        - summary
+        - indicator
+        - source
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        summary:
+          type: string
+          description: >-
+            cds-hooks: <140-character summary sentence for display to the user
+            inside of this card
+          example: some <140 char Summary Message
+        detail:
+          type: string
+          description: >-
+            cds-hooks: - optional detailed information to display (GitHub
+            Flavored Markdown)
+          example: some sort of optional GitHub Markdown details
+        indicator:
+          type: string
+          description: ' urgency/importance of what this card conveys (info/warning/critical)'
+          example: info
+        source:
+          $ref: '#/components/schemas/Source'
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Suggestion'
+        selectionBehavior:
+          type: string
+          description: ' intended behavior of the suggestions. If suggestions present, value must be at-most-one'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Source:
+      type: object
+      required:
+        - label
+      properties:
+        label:
+          type: string
+          description: >-
+            short, human-readable label to display source of the card’s
+            information
+          example: Human-readable source label
+        url:
+          type: string
+          description: >-
+            optional absolute URL to load to learn more about the organization
+            or data set
+          example: 'https://example.com'
+        icon:
+          type: string
+          description: ' absolute url for an icon for the source of this card (100x100 pixel PNG without any transparent regions)'
+          example: 'https://example.com/img/icon-100px.png'
+    Suggestion:
+      type: object
+      required:
+        - label
+      properties:
+        uuid:
+          type: string
+          description: unique identifier for auditing and logging suggestions
+          example: e1187895-ad57-4ff7-a1f1-ccf954b2fe46
+        label:
+          type: string
+          description: human-readable label to display for this suggestion
+          example: Human-readable suggestion label
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Action'
+    Action:
+      type: object
+      required:
+        - type
+        - description
+      properties:
+        type:
+          type: string
+          description: type of action being performed (create/update/delete)
+          example: create
+        description:
+          type: string
+          description: human-readable description of the suggested action
+          example: Create a prescription for Acetaminophen 250 MG
+        resource:
+          type: string
+          description: FHIR resource to create/update or id of resource to delete
+          example: MedicationRequest
+    Link:
+      type: object
+      required:
+        - label
+        - url
+        - type
+      properties:
+        label:
+          type: string
+          description: human-readable label to display
+          example: SMART Example App
+        url:
+          type: string
+          description: URL to GET when link is clicked
+        type:
+          type: string
+          description: 'type of the given URL (absolute/smart) '
+        appContext:
+          type: string
+          description: additional context to share with a linked SMART app
