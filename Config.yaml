@@ -29,7 +29,6 @@
         pluginType:
           type: string
           enum:
-            - e
             - g
             - m
             - f
@@ -45,6 +44,11 @@
         pluginTypeTitle:
           type: string
           enum:
+            - Guidance
+            - Mapper
+            - FHIR
+            - Default FHIR
+            - Default Mapper
           description: >-
             A human-readable value for the type. 'g'=Guidance, 'c'=Convenience, 
             'm'=Mapper, 'f'=FHIR, 'mD'=Default Mapper, 'fD'=Default FHIR
