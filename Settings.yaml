@@ -1,0 +1,81 @@
+    Settings:
+      type: object
+      description: >-
+        Used for specifying factory defaults, admin over-ride defaults,
+        user-over-ride input values, and ultimately the values that the plugin
+        used.
+      properties:
+        pluginSelectors:
+          description: >-
+            Maps the piid to a set of selector values. Optionally, call the
+            /selectors endpoint first to get the full list of available
+            selectors and their legal values. For example, two selectors might
+            be 1. drug type and 2. indication. If the client selects values for
+            the selector that matches all piid selector values, then this plugin
+            can provide guidance. Potentially, a decision tree could be
+            implemented here by prefacing each selectorarray item with logic,
+            but for this API version we will instead always AND all the selector
+            array elements. For example, 'if guidance is requried for drug _x_
+            AND indication _y_ then use plugin _z_'.
+          type: array
+          items:
+            $ref: '#/components/schemas/PluginSelector'
+          example:
+            - id: dosing.rxCUI
+              title: Drug
+              legalValues:
+                type: string
+                enum:
+                  - value: 'rxCUI:1596450'
+                    title: Gentamicin
+                  - value: 'rxCUI:1723160'
+                    title: Amikacin
+              selectorValue:
+                value: 'rxCUI:1596450'
+                title: Amikacin
+        modelParameters:
+          description: >-
+            Default, typed values for any parameters that might be required by
+            the plugin
+          type: array
+          items:
+            $ref: '#/components/schemas/PluginParameter'
+          example:
+            - id: 'pdspi-guidance-example:1'
+              title: Extended interval nomogram
+              parameterDescription: >-
+                This calculator uses one of four extended-interval nomograms.
+                Please choose one nomogram.
+              legalValues:
+                type: string
+                enum:
+                  - Hartford
+                  - Urban-Craig
+                  - Conventional A
+                  - Conventional B
+              parameterValue:
+                value: Hartford
+        patientVariables:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatientVariable'
+          example:
+            - id: 'LOINC:30525-0'
+              certitude: 1
+              how: The value was specified by the end user.
+              title: Age
+              variableValue:
+                value: '.5'
+                units: years
+              why: >-
+                Age is used to calculate the creatinine clearance. Dosing is
+                lower for geriatric patient and contraindicated for pediatric
+                patients
+              legalValues:
+                type: number
+                minimum: '0'
+        timestamp:
+          description: 'If absent, defaults to current time.'
+          type: string
+          format: date-time
+          example: '2019-12-03T13:41:09.942+00:00'
