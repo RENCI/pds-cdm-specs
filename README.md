@@ -3,6 +3,7 @@ Use these specs in the PDS APIs
 
 # examples
 ## Config
+Below includes an array of configs, one each for FHIR, Mapper, and Guidance types.
 Yaml: (used in specs)
 ```
                 example:
