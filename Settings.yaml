@@ -3,20 +3,11 @@
       description: >-
         Used for specifying factory defaults, admin over-ride defaults,
         user-over-ride input values, and ultimately the values that the plugin
-        used.
+        will use, or reports as having used.
       properties:
         pluginSelectors:
           description: >-
-            Maps the piid to a set of selector values. Optionally, call the
-            /selectors endpoint first to get the full list of available
-            selectors and their legal values. For example, two selectors might
-            be 1. drug type and 2. indication. If the client selects values for
-            the selector that matches all piid selector values, then this plugin
-            can provide guidance. Potentially, a decision tree could be
-            implemented here by prefacing each selectorarray item with logic,
-            but for this API version we will instead always AND all the selector
-            array elements. For example, 'if guidance is requried for drug _x_
-            AND indication _y_ then use plugin _z_'.
+            Maps the piid to a set of selector values.
           type: array
           items:
             $ref: '#/components/schemas/PluginSelector'
