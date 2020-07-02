@@ -14,6 +14,8 @@
             version. The client has the option of ignoring this variable if it
             doesn't recognize the id, but if another plugin requires this variable, 
             then the user won't have the option of overriding it if the client ignores it.
+            Stylistically, community standard coding system used for this type will 
+            preface the code used, e.g., LOINC:3025-0, ICD10:R53, HP:0000819, rxCUI:1596450, etc.
           example: 'LOINC:30525-0'
         certitude:
           type: integer
