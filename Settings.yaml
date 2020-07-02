@@ -7,7 +7,11 @@
       properties:
         pluginSelectors:
           description: >-
-            Maps the piid to a set of selector values.
+            Maps the piid to a set of selector values. Potentially, a decision tree could be
+            implemented here by prefacing each selectorarray item with logic,
+            but for this API version we will instead always AND all the selector
+            array elements. For example, 'if guidance is requried for drug _x_
+            AND indication _y_ then use plugin _z_'.
           type: array
           items:
             $ref: '#/components/schemas/PluginSelector'
@@ -66,7 +70,7 @@
                 type: number
                 minimum: '0'
         timestamp:
-          description: 'If absent, defaults to current time.'
+          description: 'If absent, defaults to current time. Can be overridden by patientVariables timestamp value on a variable-by-variable basis.'
           type: string
           format: date-time
           example: '2019-12-03T13:41:09.942+00:00'
