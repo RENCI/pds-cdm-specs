@@ -79,7 +79,7 @@
             Age is used to calculate the creatinine clearance. Dosing is lower
             for geriatric patient and contraindicated for pediatric patients
         legalValues:
-          type: string
+          type: object
           description: >-
             If absent, all values are legal, so treat the value like a string.
             Use the JSON schema,
@@ -87,11 +87,7 @@
             For example, { type: 'string', 'enum': [ 'Gentamicin', 'Amikacin' ]
             } to define an enumeration,  { 'type': 'number' } for a float, and {
             'type': 'number', 'minimum': '0' } for a positive number, and {
-            'type': 'integer' } for an integer. NOTE: This value is
-            actually an object type, but we use 'string' here to overcome a
-            shortcoming of the swagger ui. This design choice was made in order
-            to prioritize a better interactive documentation experience for the
-            API user. 
+            'type': 'integer' } for an integer. 
           example:
             type: number
             minimum: '0'
