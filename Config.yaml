@@ -16,8 +16,9 @@
           example: DOAC variable mapper
         enabled:
           type: boolean
-          description: Admin can 'disable' this plugin, and if so, prevent it from being
-          chosen on any client or dashboard.
+          description: >-
+            Admin can 'disable' this plugin, and if so, prevent it from being
+            chosen on any client or dashboard.
           example: true 
         pluginDependencies:
           type: array
