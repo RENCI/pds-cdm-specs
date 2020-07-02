@@ -5,8 +5,6 @@
       type: object
       required:
         - piid
-        - return
-        - cards
       properties:
         piid:
           type: string
