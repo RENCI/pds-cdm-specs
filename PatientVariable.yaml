@@ -95,6 +95,13 @@
           example:
             type: number
             minimum: '0'
+        group:
+            type: string
+            description: >-
+              A 'tag' for grouping semantically similar variables. Used to inform
+              the client on how to render many patient variables, e.g., 'Symptom', 
+              'Profile', 'Pre-existing condition'.
+            example: "Patient variable"
         timestamp:
           type: string
           description: >-
