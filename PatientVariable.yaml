@@ -18,55 +18,48 @@
           type: integer
           description: >-
             The certitude of the value, 0 not certain, 1 somewhat certain, 2
-            certain
+            certain. User-supplied values will always be '2' to avoid personal 
+            bias in reporting certitude, with the assumption that human error 
+            will be intercepted, and human intelligence overrides algorithm outputs.
           example: 2
         variableDescription:
           type: string
           description: >-
-            Description of the patient variable provided by the plugin. The
-            plugin, not the client, is therefore responsible for converting the
-            descriptions to the appropriate language based on
-            internationalization and personalization preferences. Patient
+            Description of the patient variable can optionally be set by the plugin. Patient
             variable descriptions should describe the variable precisely; for
             example, rather than say simply 'BMI',the variable might be
             described as 'nearest BMI prior to intervention', or
             'comma-delimited list of {BMI,date} objects for the patient with a
             given study period, as defined by the 'study-start', 'study-end'
-            model parameters' 
+            model parameters'. The comprehensive list of supported patient variables is tied to
+            the PDS release. 
           example: "The age is determined by subtracting the birthdate from the current time. Also known as 'chronological age' or 'Post Natal Age' (PNA). Specified as somen fraction of years, convention."
         how:
           type: string
           description: >-
-            A value such as 'The value was specified by the end user.' indicates
-            that any value in the EHR (whether or not it was missing in the EHR)
-            has been overriden by the client via the input values to the
-            endpoint, and they will be simply passed back here.
+            A value of 'The value was specified by the end user.' indicates
+            that the EHR value (whether or not it was missing in the EHR)
+            has been overriden by the client.
           example: The value was specified by the end user.
         title:
           type: string
           description: >-
             A non-standardized, human-readable string to describe the id. May be
             implemented by the PDS to aid in debugging, clients should not
-            depend on this value. NOTE: This value is actually an object type,
-            but we use 'string' here to overcome a shortcoming of the swagger
-            ui. This design choice was made in order to prioritize a better
-            interactive documentation experience for the API user.
+            depend on this value.
           example: Age
         variableValue:
           description: >-
-            The justification id maps to only one PatientVariable, which in
-            turn, defines all the legal values (legalValues) for this id. The
-            legalValues define the type for the variableValue, and so can be
-            used to inform the client on how to render the variableValue. The
-            legalValues field here is optional, so the client can find the type
-            by calling the '/config' endpoint, matching the 'id' with that in
-            this justification schema, and looking up 'legalValues'. The
+            The type for the variableValue is defined by the legalValues, and thus is
+            the client informed on how to render the variableValue. The
             variableValue may also include the 'units' field, which is optional,
-            and if left off, implies the system default units. NOTE: The
-            'variableValue' is actually an object type, but we use 'string' here
-            to overcome a shortcoming of the swagger ui. This design choice was
-            made in order to prioritize a better interactive documentation
-            experience for the API user.
+            and if left off, implies the system default units. It's up to the
+            guidance plugin to make unit conversions as needed by the guidance
+            model, just as it is up to the dashboard to make unit conversions as
+            needed by the end user. NOTE: The 'variableValue' is actually an object 
+            type, but we use 'string' here to overcome a shortcoming of the swagger 
+            ui. This design choice was made in order to prioritize a better 
+            interactive documentation experience for the API user.
           type: object
           example:
             value: '0.5'
@@ -91,10 +84,7 @@
             For example, { type: 'string', 'enum': [ 'Gentamicin', 'Amikacin' ]
             } to define an enumeration,  { 'type': 'number' } for a float, and {
             'type': 'number', 'minimum': '0' } for a positive number, and {
-            'type': 'integer' } for an integer. The client should have prior
-            knowledge of the supported patient variables, and thus should
-            provide it's own human-readable titles for representation on any
-            end-user interfaces in the appropriate language. NOTE: This value is
+            'type': 'integer' } for an integer. NOTE: This value is
             actually an object type, but we use 'string' here to overcome a
             shortcoming of the swagger ui. This design choice was made in order
             to prioritize a better interactive documentation experience for the
@@ -102,14 +92,6 @@
           example:
             type: number
             minimum: '0'
-        units:
-          type: string
-          description: >-
-            The unit is standard throughout the pds system. It's up to the
-            guidance plugin to make unit conversions as needed by the guidance
-            model, just as it is up to the dashboard to make unit conversions as
-            needed by the end user.
-          example: years
         timestamp:
           type: string
           description: >-
