@@ -100,7 +100,7 @@
             description: >-
               A 'tag' for grouping semantically similar variables. Used to inform
               the client on how to render many patient variables, e.g., 'Symptom', 
-              'Profile', 'Pre-existing condition'.
+              'Profile', 'Pre-existing condition'. Can be safely ignored by client.
             example: "Patient variable"
         timestamp:
           type: string
