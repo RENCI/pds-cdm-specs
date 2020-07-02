@@ -26,7 +26,7 @@
         txid:
           type: string
           description: >-
-            The transaction id sent in the GuidanceInputs. If none were sent, a
+            The transaction id sent in to the GuidanceInputs. If none were sent, a
             unique id will be created and sent back here.
           example: 38-1
         ptid:
