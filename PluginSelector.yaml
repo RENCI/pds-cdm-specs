@@ -1,10 +1,10 @@
     PluginSelector:
+      type: object
       description: >-
         Used for selecting plugins. For example, a selector that provides the
         value of a drug class informs what type of guidance plugin is required,
         or an URL to a FHIR server informs FHIR server/mapper plugin combination
         to use.
-      type: object
       required:
         - id
       properties:
@@ -12,8 +12,11 @@
           type: string
           description: >-
             The client should have prior knowledge of the full list of selectors
-            available with this version of the mapper. This id is used to
-            determine which selector type is described.
+            available with this version of the mapper. This unique id is used to
+            determine which selector type is described. Stylistically, the id will
+            end in the community standard coding system used for this type, e.g.,
+            FHIR.URI, dosing.rxCUI. But not always, e.g., PDS:sars is a selector 
+            for choosing guidance for treatement vs capacity.
           example: FHIR.URI
         legalValues:
           type: object
@@ -42,10 +45,7 @@
         selectorValue:
           type: string
           description: >-
-            Unique identifier for this type. Stylistically, community standard
-            coding system used for this type will preface the code used, e.g.,
-            http://fhir.org or urn://cdwh.nctracs.v1. The title in the example
-            is optional. NOTE: This value is actually an object type, but we use
+            The title in the example is optional. NOTE: This value is actually an object type, but we use
             'string' here to overcome a shortcoming of the swagger ui. This
             design choice was made in order to prioritize a better interactive
             documentation experience for the API user. 
