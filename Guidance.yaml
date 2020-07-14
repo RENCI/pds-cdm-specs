@@ -32,20 +32,20 @@
             specified, depend only on the 'variableValue' in 'PatientVariable', which is part of 'inputs'
           type: string
           example: smart-7321938
-        inputs:
+        settings_requested:
           $ref: '#/components/schemas/Settings'
-        return:
+        settings_used:
           $ref: '#/components/schemas/Settings'
         cards:
           type: array
           description: 'Set of suggested actions, per the CDS-Hooks standard'
           items:
             $ref: '#/components/schemas/Card'
-        specs:
+        advanced:
           type: array
-          description: Vega-lite spec used for guidance visualization
+          description: 'Set of supporting data outputs for visualization'
           items:
-            $ref: '#/components/schemas/Spec'
+            $ref: '#/components/schemas/Output'
         timeout:
           type: integer
           description: >-

@@ -1,0 +1,23 @@
+    Output:
+      type: object
+      description: supporting data output for visualization
+      properties:
+        id:
+          type: string
+          example: "oid-1"
+        name:
+          type: string
+          example: "Time-series data"
+        description:
+          type: string
+          example: "Information about time-series data"
+        data:
+          type: array
+          description: "data to be visualized"
+          items:
+            type: object
+        specs:
+          type: array
+          description: Vega-lite spec used for guidance visualization
+          items:
+            $ref: '#/components/schemas/Spec'
