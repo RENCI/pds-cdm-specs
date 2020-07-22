@@ -212,8 +212,8 @@ Example JSON (used in code):
     }
   ],
   "timeout": 0,
-  "fhir_piid": "pdspi-fhir-example",
-  "mapper_piid": "pdspi-mapper-example"
+  "fhirPiid": "pdspi-fhir-example",
+  "mapperPiid": "pdspi-mapper-example"
 }
 ```
 
