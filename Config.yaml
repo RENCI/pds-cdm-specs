@@ -38,11 +38,9 @@
             - g
             - m
             - f
-            - fD
-            - mD
           description: >-
             A value identifying the plugin type. 
-            'g'=Guidance, 'c'=Convenience, 'm'=Mapper, 'f'=FHIR, 'mD'= Default Mapper, 'fD'=Default FHIR. In 
+            'g'=Guidance, 'c'=Convenience, 'm'=Mapper, 'f'=FHIR. In 
             the clinical arena, only one FHIR server and only one mapper is 
             allowed, and this can be indicated either with the defaults, or by 
             only installing one mapper and one FHIR plugin type.
@@ -53,10 +51,8 @@
             - Guidance
             - Mapper
             - FHIR
-            - Default FHIR
-            - Default Mapper
           description: >-
             A human-readable value for the type. 'g'=Guidance, 'c'=Convenience, 
-            'm'=Mapper, 'f'=FHIR, 'mD'=Default Mapper, 'fD'=Default FHIR
+            'm'=Mapper, 'f'=FHIR
         settingsDefaults:
           $ref: '#/components/schemas/Settings'
